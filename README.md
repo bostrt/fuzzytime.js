@@ -27,4 +27,3 @@ More FuzzyJS
 Documentation - *xxxxxxx*
 Source - *xxxxxxx*
 Submit an issue - *xxxxxxx*
-
