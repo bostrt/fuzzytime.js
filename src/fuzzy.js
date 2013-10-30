@@ -126,26 +126,30 @@
         time = lowerDelta.split("t")[1];
         period = lowerDelta.split("t")[0].split("p").join("");
 
-        for (var i in period) {
-            if (/[a-z]/.test(period[i])) {
-                // We've hit the Unit part
-                delta.push({time: parseFloat(value), unit: Fuzzy.findFuzzyTimeUnit(period[i].toUpperCase())});
-                value = "";
-            } else {
-                value += period[i];
+        if (period != null && period.length > 0) {
+            for (var i = 0; i < period.length; i++) {
+                if (/[a-z]/.test(period[i])) {
+                    // We've hit the Unit part
+                    delta.push({time: parseFloat(value), unit: Fuzzy.findFuzzyTimeUnit(period[i].toUpperCase())});
+                    value = "";
+                } else {
+                    value += period[i];
+                }
             }
         }
         
-        for (var i in time) {
-            if (/[a-z]/.test(time[i])) {
-                // We've hit the Unit part
-                delta.push({time: parseFloat(value), unit: Fuzzy.findFuzzyTimeUnit(time[i])});
-                value = "";
-            } else {
-                value += time[i];
+        if (time != null && time.length > 0) {
+            for (var i = 0; i < time.length; i++) {
+                if (/[a-z]/.test(time[i])) {
+                    // We've hit the Unit part
+                    delta.push({time: parseFloat(value), unit: Fuzzy.findFuzzyTimeUnit(time[i])});
+                    value = "";
+                } else {
+                    value += time[i];
+                }
             }
         }
-
+        
         return delta;
     };
 
