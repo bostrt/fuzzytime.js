@@ -10,5 +10,8 @@
     "grunt-simple-mocha": "latest",
     "grunt-cli": "latest"
   },
+  "scripts" :{
+      "test": "grunt --verbose"
+  },
   "license": "MIT"
 }
