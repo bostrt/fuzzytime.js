@@ -1,4 +1,4 @@
-FuzzyJS [![Build Status](https://travis-ci.org/bostrt/fuzzyjs.png?branch=master)](https://travis-ci.org/bostrt/fuzzyjs)
+FuzzyJS [![Build Status](https://travis-ci.org/bostrt/fuzzytime.js.png?branch=master)](https://travis-ci.org/bostrt/fuzzytime.js)
 =======
 
 FuzzyJS is a JavaScript library used for generating "fuzzy" timestamps.
