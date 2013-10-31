@@ -1,17 +1,30 @@
 {
-  "name": "fuzzyjs",
-  "version": "0.0.1",
-  "description": "A JavaScript library for generating \"fuzzy\" time-stamps.",
-  "author": "Robert Bost <bostrt.at.gmail.dot.com>",
-  "devDependencies": {
-    "mocha": "latest",
-    "grunt": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-simple-mocha": "latest",
-    "grunt-cli": "latest"
-  },
-  "scripts" :{
-      "test": "grunt --verbose"
-  },
-  "license": "MIT"
+    "name": "fuzzytime.js",
+    "version": "1.0.0-beta1",
+    "description": "A JavaScript library for generating \"fuzzy\" time-stamps.",
+    "author": "Robert Bost <bostrt.at.gmail.dot.com>",
+    "devDependencies": {
+	"mocha": "latest",
+	"grunt": "latest",
+	"grunt-contrib-uglify": "latest",
+	"grunt-simple-mocha": "latest",
+	"grunt-cli": "latest"
+    },
+    "scripts" :{
+	"test": "grunt --verbose"
+    },
+    "keywords": [
+	"fuzzy",
+	"string",
+	"date",
+	"timestamp",
+	"time-stamp",
+	"ago"
+    ],
+    "respository": {
+	"type": "git",
+	"url": "https://github.com/bostrt/fuzzyjs.git"
+    },
+    "license": "MIT",
+    "readmeFilename": "README.md"
 }
