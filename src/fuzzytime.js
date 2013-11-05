@@ -20,13 +20,13 @@
      * @readonly
      */
     FuzzyTime.Unit = {
-        YEAR : 0,
-        MONTH: 1,
-        WEEK: 2,
+        YEAR : 6,
+        MONTH: 5,
+        WEEK: 4,
         DAY: 3,
-        HOUR: 4,
-        MINUTE: 5,
-        SECOND: 6
+        HOUR: 2,
+        MINUTE: 1,
+        SECOND: 0
     };
 
     /**
@@ -367,9 +367,13 @@
                 return this.buildString(delta, at.format);
             }
         }
-        
-        if (delta > 0) {
+
+        // FIXME: The `date < refreferenceDate` does not allow for future date deltas.
+        if (delta > 0 && date < referenceDate) {
             // Check "before"
+            
+            var returnVar = null,
+                    xDateDelta = null;
             for (var beforeIdx in this.befores) {
                 var xDate = new Date(date);
                 var before = this.befores[beforeIdx];
@@ -381,24 +385,47 @@
                 // Is the difference between the two provided dates less than
                 // the "before" configuration we're looping on?
                 if (!(date > referenceDate) && xDate >= referenceDate) {
-                    return this.buildString(delta, before.format);
+                    if (xDateDelta === null) {
+                        xDateDelta = xDate - referenceDate;
+                    }
+
+                    if (xDateDelta >= (xDate - referenceDate)) {
+                        xDateDelta = xDate - referenceDate;
+                        returnVar = this.buildString(delta, before.format);
+                    }
                 }
             }
+
+            if (returnVar !== null) {
+                return returnVar;
+            }
+
+            xDateDelta = null;
+            returnVar = null;
             
             // Check "after"
             for (var afterIdx in this.afters) {
                 var xDate = new Date(date);
                 var after = this.afters[afterIdx];
-                
+
                 for (var i in after.delta) {
                     xDate = FuzzyTime.addTime(date, after.delta[i].time, after.delta[i].unit);
                 }
 
-                // Is the difference between the two provided dates greater than
-                // the "after" configuration we're looping on?
-                if (!(date > referenceDate) && xDate <= referenceDate) {
-                    return this.buildString(delta, after.format);
+                if (xDate <= referenceDate) {
+                    if (xDateDelta === null) {
+                        xDateDelta = xDate - referenceDate;
+                    }
+
+                    if (xDateDelta >= (xDate - referenceDate)) {
+                        xDateDelta = xDate - referenceDate;
+                        returnVar = this.buildString(delta, after.format);
+                    }
                 }
+            }
+
+            if (returnVar !== null) {
+                return returnVar;
             }
         }
 

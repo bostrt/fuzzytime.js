@@ -117,11 +117,11 @@ describe('FuzzyTime', function() {
            var c = new Date("01/21/2015 11:15:10 AM");
            var d = new Date("01/21/2021 11:15:10 AM");
            var e = new Date("07/22/2021 23:15:10");
-           fuzzy.at("a year ago", [{time: 12, unit: FuzzyTime.Unit.MONTH}]);
-           fuzzy.at("a year to go", [{time: -12, unit: FuzzyTime.Unit.MONTH}]);
-           fuzzy.at("two years ago", [{time: 24, unit: FuzzyTime.Unit.MONTH}]);
-           fuzzy.at("eight years ago", [{time: 96, unit: FuzzyTime.Unit.MONTH}]);
            fuzzy.at("eight and a half years ago", [{time: 8, unit: FuzzyTime.Unit.YEAR}, {time: .5, unit: FuzzyTime.Unit.YEAR}]);
+           fuzzy.at("two years ago", [{time: 24, unit: FuzzyTime.Unit.MONTH}]);
+           fuzzy.at("a year to go", [{time: -12, unit: FuzzyTime.Unit.MONTH}]);
+           fuzzy.at("eight years ago", [{time: 96, unit: FuzzyTime.Unit.MONTH}]);
+           fuzzy.at("a year ago", [{time: 12, unit: FuzzyTime.Unit.MONTH}]);
            assert.equal('a year ago', fuzzy.build(a, b));
            assert.equal('two years ago', fuzzy.build(a, c));
            assert.equal('a year to go', fuzzy.build(b, a));
@@ -135,12 +135,11 @@ describe('FuzzyTime', function() {
            var fuzzy = new FuzzyTime();
            var a = new Date("10/22/2013 12:54:58 PM");
            var b = new Date("10/21/2013 03:00:00 PM");
-           var c = new Date("10/21/2012 03:00:00 PM");
-           var d = new Date("10/22/2013 02:54:58 PM");
+           var c = new Date("10/22/2013 02:54:58 PM");
            fuzzy.before("%h hours ago", "T16H");
            fuzzy.before("yesterday", "1D");
            assert.equal('yesterday', fuzzy.build(b, a));
-           assert.equal('2 hours ago', fuzzy.build(a, d));
+           assert.equal('2 hours ago', fuzzy.build(a, c));
         });
     });
 
@@ -150,8 +149,12 @@ describe('FuzzyTime', function() {
             var a = new Date(2013, 00, 05);
             var b = new Date(2013, 00, 01);
             var c = new Date(2013, 00, 04);
+            fuzzy.before("too early", "P0.5D");
+            fuzzy.before("too early", "P0.99D");
             fuzzy.after("%d days ago", "P3D");
+            fuzzy.after("more than a week ago", "P7D");
             assert.equal('4 days ago', fuzzy.build(b, a));
+            // No template is defined that applies to a 1-day-delta
             assert.equal(c.toLocaleString(), fuzzy.build(c, a));
         });
     });
