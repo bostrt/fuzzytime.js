@@ -18,7 +18,7 @@
 	"time-stamp",
 	"ago"
     ],
-    "respository": {
+    "repository": {
 	"type": "git",
 	"url": "git@github.com:bostrt/fuzzytime.js.git"
     },
