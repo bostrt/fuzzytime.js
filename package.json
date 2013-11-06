@@ -1,6 +1,6 @@
 {
     "name": "fuzzytime.js",
-    "version": "1.0.0-beta1",
+    "version": "1.0.0-beta2",
     "description": "A JavaScript library for generating \"fuzzy\" time-stamps.",
     "author": "Robert Bost <bostrt.at.gmail.dot.com>",
     "devDependencies": {
