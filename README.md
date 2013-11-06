@@ -12,6 +12,14 @@ you do that. Also, fuzzytime.js lets you generate those "fuzzy" timestamps using
   - or even `"%M months in the future"`.
   
 Fuzzytime.js supports [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) Durations (e.g. "1Y15D", "T45M", etc.) for specifying time deltas.
+
+Install
+=====
+`npm install fuzzytime.js`
+
+_**or**_
+
+`bower install fuzzytime.js`
   
 Quick Start
 ======
