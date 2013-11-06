@@ -1,4 +1,5 @@
-fuzzytime.js [![Build Status](https://travis-ci.org/bostrt/fuzzytime.js.png?branch=master)](https://travis-ci.org/bostrt/fuzzytime.js)
+fuzzytime.js [![Build Status](https://travis-ci.org/bostrt/fuzzytime.js.png?branch=master)](https://travis-ci.org/bostrt/fuzzytime.js) [![NPM version](https://badge.fury.io/js/fuzzytime.js.png)](http://badge.fury.io/js/fuzzytime.js)
+
 =======
 
 Fuzzytime.js is a JavaScript library used for generating "fuzzy" timestamps.
