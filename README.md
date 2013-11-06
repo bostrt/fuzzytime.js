@@ -15,11 +15,11 @@ Fuzzytime.js supports [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Duration
 
 Install
 =====
-`npm install fuzzytime.js`
+`$ npm install fuzzytime.js`
 
 _**or**_
 
-`bower install fuzzytime.js`
+`$ bower install fuzzytime.js`
   
 Quick Start
 ======
