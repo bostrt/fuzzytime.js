@@ -1,5 +1,5 @@
 var assert = require('assert');
-var FuzzyTime = require('../src/fuzzytime.js');
+var FuzzyTime = require('../lib/fuzzytime.js');
 
 describe('FuzzyTime', function() {
     describe("static method", function() {
