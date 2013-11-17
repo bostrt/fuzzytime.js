@@ -1,6 +1,6 @@
 {
     "name": "fuzzytime",
-    "main": "./lib/fuzzytime",
+    "main": "./fuzzytime.js",
     "version": "1.0.0-beta3",
     "homepage": "https://github.com/bostrt/fuzzytime.js",
     "authors": [
