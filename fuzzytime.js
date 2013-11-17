@@ -6,6 +6,7 @@
      * @global
      * @class FuzzyTime
      * @author Robert Bost <bostrt at gmail dot com>
+     * @license MIT
      */
     var FuzzyTime = function(){
         this.ats = [];
@@ -33,6 +34,7 @@
      * Table storing conversion between IS0 8601 abbreviations, {@link FuzzyTime.Unit}s,
      * string format variables, and the time period/unit in seconds.
      * @private
+     * @ignore
      */
     FuzzyTime.conversions = [
         {argument : '%y', multiplier: 31536000, unit: FuzzyTime.Unit.YEAR, abbrev: 'Y'},
@@ -46,9 +48,9 @@
 
     /**
      * Get the days in the month of the given date.
-     * @memberOf FuzzyTime
      * @param {Date} date The date that you want to count the days in the month of.
      * @returns {number} days in the month in the given date
+     * @private
      */
     FuzzyTime.getDaysInMonth = function(date) {
         switch(date.getMonth()) {
@@ -72,7 +74,7 @@
 
     /**
      * Check if the given date is a leap year.
-     * @memberOf FuzzyTime
+     * @private
      * @param {Date} date The date that you want to check for a leap year.
      * @returns {boolean} True if date is a leap year. False otherwise.
      */
@@ -92,10 +94,10 @@
     /**
      * Get the {@link FuzzyTime.Unit} enum of a given ISO 8601 duration unit.
      * @memberOf FuzzyTime
+     * @private
      * @param {string} string The ISO 8601 Duration unit (e.g. "Y", "M", "S", etc)
      * {@link FuzzyTime.Unit} of.
      * @returns {FuzzyTime.Unit} time unit enum
-     * @private
      */
     FuzzyTime.findFuzzyTimeUnit = function(string) {
         for (var i in FuzzyTime.conversions) {
@@ -110,6 +112,7 @@
      * with a little easier.
      *
      * @memberOf FuzzyTime
+     * @private
      * @param {string} delta An IS0 8601 Duration
      * @returns {list} The duration in an array of
      * maps like:
@@ -157,6 +160,8 @@
     /**
      * Adds the given time value to the given date. The time value's unit is
      * specified by the fuzzyTimeUnit parameter.
+     * @private
+     * @memberOf FuzzyTime
      * @param {Date} date - A date you want to add time to
      * @param {float} timeValue - The time value you want to add to the given date
      * @param {FuzzyTime.Unit} fuzzyTimeUnit - The unit of time you want to add to given date
@@ -308,6 +313,9 @@
 
     /**
      * Populates the variables in a string template/format.
+     * @memberOf FuzzyTime
+     * @protected
+     * @ignore
      * @param {number} seconds - The time delta in seconds
      * @param {string} format - The format that needs to have variables populated
      */
@@ -339,6 +347,7 @@
      * @param {date=} referenceDate - The ending date. If nothing is provided
      * for this parameter, it defaults to <b>now</b> (i.e. <tt>new Date()</tt>).
      * @memberOf FuzzyTime
+     * @instance
      * @returns {string} The "fuzzy" timestamp for the differene between the two
      * provided dates (if only one date is provided, <i>now</i> is used for 
      * second date). If there is no "at", "before", or "after" configuration
